@@ -27,6 +27,8 @@ theta6=0.2;
 theta7=0.3*pi;
 d=-1;
 
+%hahaha
+
 a=0.1;
 h1=3;
 l1=3;
