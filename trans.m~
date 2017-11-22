@@ -71,8 +71,8 @@ T561=[cos(theta5)   sin(theta5)   0     dl ;
       -sin(theta5)  cos(theta5)   0     0; 
       0             0             0     1]; 
 
-T671=[cos(a*theta5-pi/4)  -sin(a*theta5-pi/4)   0     lf1 ;
-      sin(a*theta5-pi/4)  cos(a*theta5-pi/4)    0     0; 
+T671=[cos(a*theta5+pi/2)  -sin(a*theta5-pi/4)   0     lf1 ;
+      sin(a*theta5+pi/2)  cos(a*theta5+pi/4)    0     0; 
       0              0                1     0; 
       0              0                0     1];
 
