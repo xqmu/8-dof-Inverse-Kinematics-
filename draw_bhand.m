@@ -11,18 +11,18 @@ function [] = draw_bhand(input)
     theta7 = input(7);
     d      = input(8);
     
-    a=0.1;   %ration betwwen rotation angles of upperlink and lowerlink
-    h1=3;    %hight of the first link of Adept
-    l1=3;    %length of the second link of Adpet
-    l2=2;    %length of the third link of Adpet
-    dp=0.5;  %distance from the center of the hand plum to the rotaion aixs of two fingers
-    dl=0.5;  %distance from the rotation axis to the top of the upper links of there fingers
-    lf1=0.3; %length of the finger's upperlink
-    lf2=0.2; %length of the finger's lowerlink
-
-    x1=1; y1=1; z1=1; 
-    x2=1; y2=1; z2=1; 
-    x3=1; y3=1; z3=1; 
+    a= 45 /140;   %ration betwwen rotation angles of upperlink and lowerlink
+    h1=0.487;    %hight of the first link of Adept
+    l1=0.325;    %length of the second link of Adpet
+    l2=0.275;    %length of the third link of Adpet
+    dp=0.025;  %distance from the center of the hand plum to the rotaion aixs of two fingers
+    dl=0.050;  %distance from the rotation axis to the top of the upper links of there fingers
+    lf1=0.070; %length of the finger's upperlink
+    lf2=0.058; %length of the finger's lowerlink
+    
+    x1=0.3; y1=0.05; z1=0.2; 
+    x2=0.3; y2=0; z2=0.2; 
+    x3=0.25; y3=0; z3=0.2; 
 
     p1=[x1 y1 z1 1];
     p2=[x2;y2;z2;1];
@@ -160,10 +160,11 @@ function [] = draw_bhand(input)
     plot3([P63(1), P73(1)],[P63(2),P73(2)],[P63(3),P73(3)],'LineWidth',3);
     plot3([P73(1), P732(1)],[P73(2),P732(2)],[P73(3),P732(3)],'LineWidth',3);
     
+    plot3(p1(1), p1(2), p1(3), '*');
+    plot3(p2(1), p2(2), p2(3), '.');
+    plot3(p3(1), p3(2), p3(3), 'o');
     
     grid on;
     axis('equal'); 
-
-
 end
 

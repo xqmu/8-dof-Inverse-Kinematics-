@@ -13,18 +13,18 @@ function dist = bhand_ik(input)
     %theta1, theta2, theta3, theta4, theta5, theta6, theta7, d
 
     
-    a=0.1;   %ration betwwen rotation angles of upperlink and lowerlink
-    h1=3;    %hight of the first link of Adept
-    l1=3;    %length of the second link of Adpet
-    l2=2;    %length of the third link of Adpet
-    dp=0.5;  %distance from the center of the hand plum to the rotaion aixs of two fingers
-    dl=0.5;  %distance from the rotation axis to the top of the upper links of there fingers
-    lf1=0.3; %length of the finger's upperlink
-    lf2=0.2; %length of the finger's lowerlink
+    a=45 /140;   %ration betwwen rotation angles of upperlink and lowerlink
+    h1=0.487;    %hight of the first link of Adept
+    l1=0.325;    %length of the second link of Adpet
+    l2=0.275;    %length of the third link of Adpet
+    dp=0.025;  %distance from the center of the hand plum to the rotaion aixs of two fingers
+    dl=0.050;  %distance from the rotation axis to the top of the upper links of there fingers
+    lf1=0.070; %length of the finger's upperlink
+    lf2=0.058; %length of the finger's lowerlink
 
-    x1=1; y1=1; z1=1; 
-    x2=1; y2=1; z2=1; 
-    x3=1; y3=1; z3=1; 
+    x1=0.3; y1=0.05; z1=0.2; 
+    x2=0.3; y2=0; z2=0.2; 
+    x3=0.25; y3=0; z3=0.2; 
 
     p1=[x1 y1 z1 1];
     p2=[x2;y2;z2;1];

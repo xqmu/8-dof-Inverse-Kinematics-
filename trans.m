@@ -1,3 +1,22 @@
+
+joint1_lb = -105 / 180 * pi;
+joint1_up = - joint1_lb;
+joint2_lb = -150 / 180 * pi;
+joint2_up = - joint2_lb;
+joint3_lb = -inf;
+joint3_up = +inf;
+joint4_lb = 0.1;
+joint4_up = 0.4;
+bhand_j1_lb = 0;
+bhand_j1_up = 140 / 180 * pi;
+bhand_j2_lb = 0;
+bhand_j2_up = 140 / 180 * pi;
+bhand_j3_lb = 0;
+bhand_j3_up = 140 / 180 * pi;
+bhand_j4_lb = 0;
+bhand_j4_up = pi;
+lb = [joint1_lb, joint2_lb, joint3_lb, bhand_j4_lb, bhand_j1_lb, bhand_j2_lb, bhand_j3_lb, joint4_lb]
+ub = [joint1_up, joint2_up, joint3_up, bhand_j4_up, bhand_j1_up, bhand_j2_up, bhand_j3_up, joint4_up]
 %DH table
 %  i     a_i-1    alpha_i-1     d_i     theta_i
 %  1       0         0           h1       theta1
