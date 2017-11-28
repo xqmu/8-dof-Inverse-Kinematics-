@@ -17,24 +17,27 @@
 %  63      dl        pi/2        0        -theta7
 %  73      df1       0           0        a*theta7
 
-syms theta1 theta2 theta3 theta4 theta5 theta6 theta7 h1 l1 l2 d dp dl lf1 lf2 a; 
-theta1=0.1;
-theta2=0.2;
-theta3=0;
-theta4=0;
-theta5=0.1;
-theta6=0.2;
-theta7=0.3*pi;
-d=-1;
+syms theta1 theta2 theta3 theta4 theta5 theta6 theta7 d; 
+theta1=0.1;        %rotation angle of the Adept arm's second link 
+theta2=0.2;        %rotation angle of the Adept arm's third link
+theta3=0;          %rotation angle of the Adept arm's fourth link
+theta4=0;          %rotation angle of the hand's two symmetrical fingers
+theta5=0.1;        %rotation angle of finger1
+theta6=0.2;        %rotation angle of finger2
+theta7=0.3*pi;     %rotation angle of finger3
+d=-1;              % distance form the joint 3 to the end-effector of the
+                     % robot
 
 
-a=0.1;
-h1=3;
-l1=3;
-l2=2;
-dp=0.5;
-dl=0.5;
-lf1=0.3;
+
+a=0.1;   %ration betwwen rotation angles of upperlink and lowerlink
+h1=3;    %hight of the first link of Adept
+l1=3;    %length of the second link of Adpet
+l2=2;    %length of the third link of Adpet
+dp=0.5;  %distance from the center of the hand plum to the rotaion aixs of two fingers
+dl=0.5;  %distance from the rotation axis to the top of the upper links of there fingers
+lf1=0.3; %length of the finger's upperlink
+lf2=0.2; %length of the finger's lowerlink
 
 
 T01=[cos(theta1)  -sin(theta1)   0     0 ;
@@ -111,7 +114,7 @@ T673=[cos(a*theta7-pi/4)  -sin(a*theta7-pi/4)   0     lf1 ;
   
   
 P0=[0; 0; 0;1];
-P=[0.2;0.0;0;1];
+P=[lf2;0;0;1];
 
 P1=T01*P0;
 P2=T01*T12*P0;
