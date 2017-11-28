@@ -18,15 +18,15 @@
 %  73      df1       0           0        a*theta7-pi/4
 
 syms theta1 theta2 theta3 theta4 theta5 theta6 theta7 d; 
-theta1=0.1;        %rotation angle of the Adept arm's second link 
-theta2=0.2;        %rotation angle of the Adept arm's third link
-theta3=0;          %rotation angle of the Adept arm's fourth link
-theta4=0;          %rotation angle of the hand's two symmetrical fingers
-theta5=0.1;        %rotation angle of finger1
-theta6=0.2;        %rotation angle of finger2
-theta7=0.3*pi;     %rotation angle of finger3
-d=-1;              % distance form the joint 3 to the end-effector of the
-                     % robot
+% theta1=0.1;        %rotation angle of the Adept arm's second link 
+% theta2=0.2;        %rotation angle of the Adept arm's third link
+% theta3=0;          %rotation angle of the Adept arm's fourth link
+% theta4=0;          %rotation angle of the hand's two symmetrical fingers
+% theta5=0.1;        %rotation angle of finger1
+% theta6=0.2;        %rotation angle of finger2
+% theta7=0.3*pi;     %rotation angle of finger3
+% d=-1;              % distance form the joint 3 to the end-effector of the
+%                      % robot
 
 
 
@@ -129,9 +129,9 @@ L1=T01*T12*T23*T34*T451*T561*T671*[1;0;0;0];
 L2=T01*T12*T23*T34*T452*T562*T672*[1;0;0;0];
 L3=T01*T12*T23*T34*T453*T563*T673*[1;0;0;0];
 
-f1=dot(L1, p1)^2+dot(L2, p2)^2+dot(L3, p3)^2;
-f2=dot(L1, p2)^2+dot(L2, p3)^2+dot(L3, p1)^2;
-f3=dot(L1, p3)^2+dot(L2, p1)^2+dot(L3, p2)^2;
+f = dot(L1, p1)^2+dot(L2, p2)^2+dot(L3, p3)^2;
+% f2=dot(L1, p2)^2+dot(L2, p3)^2+dot(L3, p1)^2;
+% f3=dot(L1, p3)^2+dot(L2, p1)^2+dot(L3, p2)^2;
 
 
 % P1=T01*P0;
