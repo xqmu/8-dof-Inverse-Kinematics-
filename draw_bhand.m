@@ -3,7 +3,7 @@ function [] = draw_bhand(input)
 %   Detailed explanation goes here
 
     global a h1 l1 l2 dp dl lf1 lf2;
-    global p1 p2 p3;
+    global p1 p2 p3 v1 v2 v3;
     
     theta1 = input(1);
     theta2 = input(2);
@@ -133,6 +133,10 @@ function [] = draw_bhand(input)
     plot3([P53(1), P63(1)],[P53(2),P63(2)],[P53(3),P63(3)],'LineWidth',3);
     plot3([P63(1), P73(1)],[P63(2),P73(2)],[P63(3),P73(3)],'LineWidth',3);
     plot3([P73(1), P732(1)],[P73(2),P732(2)],[P73(3),P732(3)],'LineWidth',3);
+    
+    plot3([p1(1), p1(1)+v1(1)], [p1(2), p1(2)+v1(2)], [p1(3), p1(3)+v1(3)]);
+    plot3([p2(1), p2(1)+v2(1)], [p2(2), p2(2)+v2(2)], [p2(3), p2(3)+v2(3)]);
+    plot3([p3(1), p3(1)+v3(1)], [p3(2), p3(2)+v3(2)], [p3(3), p3(3)+v3(3)]);
     
     plot3(p1(1), p1(2), p1(3), '*');
     plot3(p2(1), p2(2), p2(3), '.');

@@ -3,6 +3,7 @@ function dist = bhand_ik(input)
 %   Detailed explanation goes here
     global a h1 l1 l2 dp dl lf1 lf2;
     global p1 p2 p3;
+    global theta1 theta2 theta3 theta4 theta5 theta6 theta7 d;
 
     theta1 = input(1);
     theta2 = input(2);
