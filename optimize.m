@@ -31,7 +31,7 @@ bhand_j4_up = pi;
 lb = [joint1_lb, joint2_lb, joint3_lb, bhand_j4_lb, bhand_j1_lb, bhand_j2_lb, bhand_j3_lb, joint4_lb];
 ub = [joint1_up, joint2_up, joint3_up, bhand_j4_up, bhand_j1_up, bhand_j2_up, bhand_j3_up, joint4_up];
 
-x0=[0,0,0,0,0,0,0,0];
+x0=[0,0,0,0,0,0,0,-0.1];
     
 x1=0.3;   y1=0.05;  z1=0.2;   
 x2=0.3;   y2=0;     z2=0.2;    
@@ -45,8 +45,8 @@ v1=[0 0.1 0.05 0];
 v2=[-0.05 0.05*sqrt(2) 0.05 0];
 v3=[-0.05 -0.05*sqrt(2) 0.05 0];
 
-
-[x,fval,exitflag,output,lambda,grad,hessian]=fmincon(@bhand_ik, x0, [],[], [],[], lb, ub,@ineqcon);
+opts = optimoptions('fmincon','Display','iter','Algorithm','sqp');
+[x,fval,exitflag,output,lambda,grad,hessian]=fmincon(@bhand_ik, x0, [],[], [],[], lb, ub, @ineqcon, opts);
     
 draw_bhand(x);   
 
