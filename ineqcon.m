@@ -1,11 +1,19 @@
-function [c, ceq ] = ineqcon()
+function [c, ceq ] = ineqcon(input)
 %IEQULCON Summary of this function goes here
 %   Detailed explanation goes here
 
 global a h1 l1 l2 dp dl lf1;
 global v1 v2 v3;
 
-global theta1 theta2 theta3 theta4 theta5 theta6 theta7 d;
+% % global theta1 theta2 theta3 theta4 theta5 theta6 theta7 d;
+    theta1 = input(1);
+    theta2 = input(2);
+    theta3 = input(3);
+    theta4 = input(4);
+    theta5 = input(5);
+    theta6 = input(6);
+    theta7 = input(7);
+    d      = input(8);
 
 T01=[cos(theta1)  -sin(theta1)   0     0 ;
      sin(theta1)  cos(theta1)    0     0; 
