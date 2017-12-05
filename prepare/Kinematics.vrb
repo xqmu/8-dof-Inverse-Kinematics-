@@ -1,6 +1,8 @@
-\frametitle{Sequential Quadratic Programming}
-A series of algorithms attempt to compute the Lagrange multipliers directly.
+\frametitle{Quadratic Programming Solution}
+At each major iteraion, a QP problem of the following form is solved
+$$\min {1 \over 2} d^\top H_k d + c^\top d$$
+\begin{eqnarray*}
+A_i d = b_i, \quad i = 1,\cdots , m_e \\
+A_i d = b_i, \quad i \leq m_e + 1,\cdots , m
+\end{eqnarray*}
 
-Constrained quasi-Newton methods guarantee super-linear convergence by accumulating second-order information regarding the KKT equations using a quasi-Newton updating procedure.
-
-A quadratic programming (QP) problem will be solved at each major iteration.
