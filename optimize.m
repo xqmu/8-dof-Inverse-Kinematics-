@@ -60,5 +60,5 @@ opts = optimoptions('fmincon','Display','iter','Algorithm','sqp', 'PlotFcn', {  
 [x,fval,exitflag,output,lambda,grad,hessian]=fmincon(@bhand_ik, x0, [],[], [],[], lb, ub, @nonlcon,opts);
     
 close(Robot_Movie);
-% draw_bhand(x); 
+%  draw_bhand(x); 
 
