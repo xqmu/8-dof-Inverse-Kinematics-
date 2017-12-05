@@ -4,6 +4,7 @@ function stop = bhand_plot_func(input,optimValues,state,varargin)
 % 
     global a h1 l1 l2 dp dl lf1 lf2;
     global p1 p2 p3 v1 v2 v3;
+    global Robot_Movie;
     
     theta1 = input(1);
     theta2 = input(2);
@@ -144,7 +145,11 @@ function stop = bhand_plot_func(input,optimValues,state,varargin)
     
     grid on;
     axis('equal'); 
+    axis([0 1 -0.3 0.5 0 0.5]);
     
+   F=getframe(1);
+   writeVideo(Robot_Movie,F); 
+   hold off;
     stop = false;
 end
 

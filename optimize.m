@@ -1,3 +1,14 @@
+clear all;
+close all;
+AVI=1;
+
+global Robot_Movie;
+if AVI==1
+    Robot_Movie=VideoWriter('Robot_Movie.avi');
+    Robot_Movie.FrameRate=5;
+    open(Robot_Movie);
+end;
+
 global a h1 l1 l2 dp dl lf1 lf2;
 global p1 p2 p3 v1 v2 v3;
 global lb ub;
@@ -48,4 +59,6 @@ v3=-[0.048161245088541 -0.012904766727952 0.003736504679321  0];
 opts = optimoptions('fmincon','Display','iter','Algorithm','sqp', 'PlotFcn', {  @bhand_plot_func });
 [x,fval,exitflag,output,lambda,grad,hessian]=fmincon(@bhand_ik, x0, [],[], [],[], lb, ub, @nonlcon,opts);
     
-draw_bhand(x);   
+close(Robot_Movie);
+% draw_bhand(x); 
+
