@@ -1,3 +1,6 @@
-\frametitle{Rigid Motion in R$^3$}
-A configuration of the system consists of the pair ($p_{ab}, R_{ab}$), and the configuration of the system if the product space of $\mathbb{R}^3$ with $SO(3)$, which shall be denoted as $SE(3)$ (for special Euclidean group):
-$$SE(3) = \mathbb{R}^3 \times SO(3)$$
+\frametitle{Sequential Quadratic Programming}
+A series of algorithms attempt to compute the Lagrange multipliers directly.
+
+Constrained quasi-Newton methods guarantee super-linear convergence by accumulating second-order information regarding the KKT equations using a quasi-Newton updating procedure.
+
+A quadratic programming (QP) problem will be solved at each major iteration.
