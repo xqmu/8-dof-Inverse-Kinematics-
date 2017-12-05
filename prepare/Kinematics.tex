@@ -5,8 +5,63 @@
 \usepackage{booktabs}
 \usepackage[scale=2]{ccicons}
 \usepackage{minted}
-
 \usepackage{graphicx} %package to manage images
+
+\def\ab{\mbox{\boldmath $a$}}
+\def\bb{\mbox{\boldmath $b$}}
+\def\cb{\mbox{\boldmath $c$}}
+\def\db{\mbox{\boldmath $d$}}
+\def\eb{\mbox{\boldmath $e$}}
+\def\fb{\mbox{\boldmath $f$}}
+\def\gb{\mbox{\boldmath $g$}}
+\def\hb{\mbox{\boldmath $h$}}
+\def\ib{\mbox{\boldmath $i$}}
+\def\jb{\mbox{\boldmath $j$}}
+\def\kb{\mbox{\boldmath $k$}}
+\def\lb{\mbox{\boldmath $l$}}
+\def\mb{\mbox{\boldmath $m$}}
+\def\nb{\mbox{\boldmath $n$}}
+\def\ob{\mbox{\boldmath $o$}}
+\def\pb{\mbox{\boldmath $p$}}
+\def\qb{\mbox{\boldmath $q$}}
+\def\rb{\mbox{\boldmath $r$}}
+\def\sb{\mbox{\boldmath $s$}}
+\def\tb{\mbox{\boldmath $t$}}
+\def\ub{\mbox{\boldmath $u$}}
+\def\vb{\mbox{\boldmath $v$}}
+\def\wb{\mbox{\boldmath $w$}}
+\def\xb{\mbox{\boldmath $x$}}
+\def\yb{\mbox{\boldmath $y$}}
+\def\zb{\mbox{\boldmath $z$}}
+
+\def\Ab{\mbox{\boldmath $A$}}
+\def\Bb{\mbox{\boldmath $B$}}
+\def\Cb{\mbox{\boldmath $C$}}
+\def\Db{\mbox{\boldmath $D$}}
+\def\Eb{\mbox{\boldmath $E$}}
+\def\Fb{\mbox{\boldmath $F$}}
+\def\Gb{\mbox{\boldmath $G$}}
+\def\Hb{\mbox{\boldmath $H$}}
+\def\Ib{\mbox{\boldmath $I$}}
+\def\Jb{\mbox{\boldmath $J$}}
+\def\Kb{\mbox{\boldmath $K$}}
+\def\Lb{\mbox{\boldmath $L$}}
+\def\Mb{\mbox{\boldmath $M$}}
+\def\Nb{\mbox{\boldmath $N$}}
+\def\Ob{\mbox{\boldmath $O$}}
+\def\Pb{\mbox{\boldmath $P$}}
+\def\Qb{\mbox{\boldmath $Q$}}
+\def\Rb{\mbox{\boldmath $R$}}
+\def\Sb{\mbox{\boldmath $S$}}
+\def\Tb{\mbox{\boldmath $T$}}
+\def\Ub{\mbox{\boldmath $U$}}
+\def\Vb{\mbox{\boldmath $V$}}
+\def\Wb{\mbox{\boldmath $W$}}
+\def\Xb{\mbox{\boldmath $X$}}
+\def\Yb{\mbox{\boldmath $Y$}}
+\def\Zb{\mbox{\boldmath $Z$}}
+
+\def\zerob{\mbox{\boldmath $0$}}
 
 
 \usepackage{tikz}
@@ -34,12 +89,80 @@
 
 \maketitle
 
-\begin{frame}[fragile]{Problem Formulation}
+\begin{frame}[fragile]{Robot}
 \includegraphics[width=6cm, height=4cm]{robot-matlab-config.jpg}
 \includegraphics[width=4cm, height=5cm]{IMG_5860.jpg}
 \end{frame}
 
+\begin{frame}[fragile]{Forward Kinematics}
+Known position of one point in the local frame $\pb_l$ and the current robot configuration, calculate the position of the point in the world frame Robot configuration $\pb_w$\\
+\[
+\begin{split}
+\pb_w &=\Tb * \pb_l \\
+&= \Tb_0^1 * \Tb_1^2* ... \Tb_{n-1}^n * \pb_l 
+\end{split}
+\]
+Transformation Matrix:
+\[
+\Tb_{i-1}^{i}=
+ \left[
+ \begin{matrix}
+   r_{11} & r_{12} & r_{13} & d_1\\
+   r_{21} & r_{22} & r_{23} & d_2 \\
+   r_{31} & r_{32} & r_{33} & d_3 \\
+   0& 0 & 0 & 1
+  \end{matrix}
+  \right] 
+\]
+\end{frame}
 
+\begin{frame}[fragile]{Inverse Kinematics}
+Given a position in the world frame $\pb_w$, calculate the robot configuration under which the end-effector of the robot $\pb_l$ can reach the desired position. \\ 
+
+From  $\pb_w =\Tb_0^1 * \Tb_1^2* ... \Tb_{n-1}^n * \pb_l$, we can know that it impossible to calculate the inverse matrix for each $\Tb_{i-1}^{i}$. 
+
+\end{frame}
+
+
+
+\begin{frame}[fragile] {Problem Description} 
+
+Objective: Minimize the distance between the destination points and the lower links of the fingers�\\
+	
+Constraints:
+\begin{itemize}
+\item Limits of the rotation angles and link length of each joint(work space of the  robot)
+\item	The destination points should be  on the lower link of the fingers
+\item	The lower links should be perpendicular to the normal direction of the tangential plane for the destination point
+\end{itemize}
+	
+\end{frame}
+
+
+
+\begin{frame}[fragile] {Problem Formulation} 
+\[
+\min \ \  \sum_{i=0}^{2} \frac{\|(\pb_1-\qb_{11})\times (\pb_1-\qb_{12}) \|}{\|\qb_1-\qb_{12}\|}
+\]
+
+Subject to 
+\[
+\nb_i \times \lb_\bot =0
+\]
+\[
+\nb_i * \lb_\bot \geq 0
+\]
+\[
+ t_i* \qb_{i1} +(1-t_i) * \qb_{i2} = \pb_i
+\]
+\[
+lb_i \leq \theta_i \leq ub_i  \ \ \ \     i=0, 1, ..., 7
+\]
+\[
+0 \leq t_i  \leq 1    \ \ \ \     i=0, 1, 2
+\]
+
+\end{frame}
 
 \begin{frame}[fragile]{Introduction}
 \begin{columns}
@@ -71,6 +194,7 @@ Constrained quasi-Newton methods guarantee super-linear convergence by accumulat
 
 A quadratic programming (QP) problem will be solved at each major iteration.
 \end{frame}
+
 
 \begin{frame}[fragile]{Sequential Quadratic Programming}
 Principal idea: \textbf{Formulate a QP subproblem based on a quadratic approximation of the Lagrangian function.}
@@ -122,6 +246,12 @@ The step length parameter $\alpha_k$ is determined in order to produce a suffici
 Merit Function:
 $$\Psi = f(x) + \sum_{i = 1}^{m_e} r_i \cdot g_i(x) + \sum_{i = m_e + 1}^{m} r_i \cdot \max [0, g_i(x)]$$
 where $r_i$ is a penalty parameter.
+\end{frame}
+
+\begin{frame}[fragile]{Demo}
+    \begin{center}
+\includegraphics[width=4cm, height=5cm]{result.png}
+     \end{center}
 \end{frame}
 
 \end{document}
