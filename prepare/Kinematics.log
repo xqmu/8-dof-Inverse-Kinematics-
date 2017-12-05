@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2016.5.22)  5 DEC 2017 16:12
-=======
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.5.24)  5 DEC 2017 16:19
->>>>>>> Stashed changes
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.5.24)  5 DEC 2017 16:25
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1609,7 +1605,6 @@ File: interior-point-method.png Graphic file (type QTm)
 ]
 \openout4 = `Kinematics.vrb'.
 
-<<<<<<< Updated upstream
  (./Kinematics.vrb
 
 Package amsmath Warning: Foreign command \over;
@@ -1627,60 +1622,33 @@ Package amsmath Warning: Foreign command \over;
 \openout4 = `Kinematics.vrb'.
 
  (./Kinematics.vrb) [9
-=======
- (./Kinematics.vrb) [7
 
 ]
 \openout4 = `Kinematics.vrb'.
 
- (./Kinematics.vrb
-
-./Kinematics.vrb:7: LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 \end{itemize}
-                 
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-./Kinematics.vrb:10: LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.10 \end{itemize}
-                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-./Kinematics.vrb:13: LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.13 \end{itemize}
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-) [8
->>>>>>> Stashed changes
-
-]
-\openout4 = `Kinematics.vrb'.
-
-<<<<<<< Updated upstream
  (./Kinematics.vrb) [10
-=======
- (./Kinematics.vrb) [9
->>>>>>> Stashed changes
+
+]
+\openout4 = `Kinematics.vrb'.
+
+ (./Kinematics.vrb) [11
+
+]
+\openout4 = `Kinematics.vrb'.
+
+ (./Kinematics.vrb) [12
+
+]
+\openout4 = `Kinematics.vrb'.
+
+ (./Kinematics.vrb) [13
+
+]
+\openout4 = `Kinematics.vrb'.
+
+ (./Kinematics.vrb) [14
+
+] [15
 
 ]
 \tf@nav=\write9
@@ -1692,40 +1660,20 @@ If that doesn't work, type  X <return>  to quit.
 \tf@snm=\write11
 \openout11 = `Kinematics.snm'.
 
-<<<<<<< Updated upstream
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 120.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 120.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 198.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 198.
  (./Kinematics.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 120.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 120.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 120.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 198.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 198.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 198.
  ) 
 Here is how much of TeX's memory you used:
- 41882 strings out of 493591
- 835872 string characters out of 6143546
- 887043 words of memory out of 5000000
- 44456 multiletter control sequences out of 15000+600000
- 6316 words of font info for 63 fonts, out of 8000000 for 9000
- 1347 hyphenation exceptions out of 8191
- 60i,12n,86p,10384b,641s stack positions out of 5000i,500n,10000p,200000b,80000s
-
-Output written on Kinematics.pdf (10 pages).
-=======
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 153.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 153.
- (./Kinematics.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 153.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 153.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 153.
- ) 
-Here is how much of TeX's memory you used:
- 41616 strings out of 493706
- 841050 string characters out of 6145769
- 922415 words of memory out of 5000000
- 44104 multiletter control sequences out of 15000+600000
+ 41657 strings out of 493706
+ 841755 string characters out of 6145769
+ 923555 words of memory out of 5000000
+ 44135 multiletter control sequences out of 15000+600000
  9113 words of font info for 77 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  60i,19n,83p,10395b,643s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Kinematics.pdf (9 pages).
->>>>>>> Stashed changes
+Output written on Kinematics.pdf (15 pages).
