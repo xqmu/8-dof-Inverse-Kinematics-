@@ -13,9 +13,6 @@ function dist = bhand_ik(input)
     theta6 = input(6);
     theta7 = input(7);
     d      = input(8);
-    t1     = input(9);
-    t2     = input(10);
-    t3     = input(11);
  
     T01=[cos(theta1)  -sin(theta1)   0     0 ;
          sin(theta1)  cos(theta1)    0     0; 
@@ -125,14 +122,18 @@ function dist = bhand_ik(input)
     p22 = p22(1:3);
     p32 = p32(1:3);
     
+    plot3([p11(1), p12(1)],[p11(2),p12(2)],[p11(3),p12(3)],'LineWidth',3,'Color', 'b');
+    hold on;
+    plot3(p1(1), p1(2), p1(3), '*', 'Color', 'r');
+    
     p10 = p1(1:3);
     p20 = p2(1:3);
     p30 = p3(1:3);
     
-    d1  = norm(cross((p10 - p11), (p10 - p12))) / norm(p12 - p11); 
-    d2  = norm(cross((p20 - p21), (p20 - p22))) / norm(p22 - p21); 
-    d3  = norm(cross((p30 - p31), (p30 - p32))) / norm(p32 - p31); 
+    d1  = norm(cross((p10' - p11), (p10' - p12))) / norm(p12 - p11); 
+    d2  = norm(cross((p20' - p21), (p20' - p22))) / norm(p22 - p21); 
+    d3  = norm(cross((p30' - p31), (p30' - p32))) / norm(p32 - p31); 
     
-    dist = d1^2 + d2^2 + d3^3;
+    dist = d1^2 + d2^2 + d3^2;
 end
 
