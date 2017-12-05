@@ -1,0 +1,21 @@
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{remark}[theorem]{Remark}
+
+%\newenvironment{proof}{\noindent{\bf Proof}\hspace{.15in}}
+%        {\hspace*{\fill} 
+%\framebox(6,6)
+%{} \vspace{.08in}}
+
+%\newcommand\qedsymbol{\hbox{\rlap{$\sqcap$}$\sqcup$}}
+%\newcommand\qed{\relax\ifmmode\else\unskip\quad\fi\qedsymbol}
+\newcommand\smartqed{\renewcommand\qed{\relax\ifmmode\qedsymbol\else
+  {\unskip\nobreak\hfil\penalty50\hskip1em\null\nobreak\hfil\qedsymbol
+  \parfillskip=\z@\finalhyphendemerits=0\endgraf}\fi}}
+
+
+

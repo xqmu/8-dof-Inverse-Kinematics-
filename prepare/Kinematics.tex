@@ -5,7 +5,6 @@
 \usepackage{booktabs}
 \usepackage[scale=2]{ccicons}
 \usepackage{minted}
-
 \usepackage{graphicx} %package to manage images
 
 
@@ -23,6 +22,10 @@
 \usefonttheme[onlymath]{serif}
 
 \newcommand\der{{\rm d}}
+
+
+\usepackage{my_def_env}
+\usepackage{my_def_sym}
 
 \title{Robot Inverse Kinematics using SQP method}
 \subtitle{}
@@ -72,6 +75,7 @@ Constrained quasi-Newton methods guarantee super-linear convergence by accumulat
 A quadratic programming (QP) problem will be solved at each major iteration.
 \end{frame}
 
+<<<<<<< Updated upstream
 \begin{frame}[fragile]{Sequential Quadratic Programming}
 Principal idea: \textbf{Formulate a QP subproblem based on a quadratic approximation of the Lagrangian function.}
 $$L(x, \lambda) = f(x) + \sum_{i=1}^m \lambda_i \cdot g_i(x)$$
@@ -113,6 +117,79 @@ $$\min {1 \over 2} d^\top H_k d + c^\top d$$
 A_i d = b_i, \quad i = 1,\cdots , m_e \\
 A_i d = b_i, \quad i \leq m_e + 1,\cdots , m
 \end{eqnarray*}
+=======
+
+\begin{frame}[fragile]{Forward Kinematics}
+Known position of one point in the local frame $\pb_l$ and the current robot configuration, calculate the position of the point in the world frame Robot configuration $\pb_w$\\
+\[
+\begin{split}
+\pb_w &=\Tb * \pb_l \\
+&= \Tb_0^1 * \Tb_1^2* ... \Tb_{n-1}^n * \pb_l 
+\end{split}
+\]
+Transformation Matrix:
+\[
+\Tb_{i-1}^{i}=
+ \left[
+ \begin{matrix}
+   r_{11} & r_{12} & r_{13} & d_1\\
+   r_{21} & r_{22} & r_{23} & d_2 \\
+   r_{31} & r_{32} & r_{33} & d_3 \\
+   0& 0 & 0 & 1
+  \end{matrix}
+  \right] 
+\]
+\end{frame}
+
+\begin{frame}[fragile]{Inverse Kinematics}
+Given a position in the world frame $\pb_w$, calculate the robot configuration under which the end-effector of the robot $\pb_l$ can reach the desired position. \\ 
+
+From  $\pb_w =\Tb_0^1 * \Tb_1^2* ... \Tb_{n-1}^n * \pb_l$, we can know that it impossible to calculate the inverse matrix for each $\Tb_{i-1}^{i}$. 
+
+\end{frame}
+
+
+
+\begin{frame}[fragile] {Problem Description} 
+
+Objective: Minimize the distance between the destination points and the lower links of the fingers \\
+	
+Constraints: 
+\begin{itemize} Limits of the rotation angles and link length of each joint(work space of the  robot)
+\end{itemize}
+\begin{itemize}
+	The destination points should be  on the lower link of the fingers
+\end{itemize}
+\begin{itemize}
+	The lower links should be perpendicular to the normal direction of the tangential plane for the destination point
+\end{itemize} 	
+	
+\end{frame}
+
+
+
+\begin{frame}[fragile] {Problem Formulation} 
+\[
+\min \ \  \sum_{i=0}^{2} \frac{\|(\pb_1-\qb_{11})\times (\pb_1-\qb_{12}) \|}{\|\qb_1-\qb_{12}\|}
+\]
+
+Subject to 
+\[
+\nb_i \times \lb_\bot =0
+\]
+\[
+\nb_i * \lb_\bot \geq 0
+\]
+\[
+ t_i* \qb_{i1} +(1-t_i) * \qb_{i2} = \pb_i
+\]
+\[
+lb_i \leq \theta_i \leq ub_i  \ \ \ \     i=0, 1, ..., 7
+\]
+\[
+0 \leq t_i  \leq 1    \ \ \ \     i=0, 1, 2
+\]
+>>>>>>> Stashed changes
 
 \end{frame}
 
