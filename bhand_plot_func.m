@@ -1,10 +1,10 @@
-function dist = bhand_ik(input)
-%UNTITLED2 Summary of this function goes here
+function stop = bhand_plot_func(input,optimValues,state,varargin)
+%UNTITLED3 Summary of this function goes here
 %   Detailed explanation goes here
+% 
     global a h1 l1 l2 dp dl lf1 lf2;
-    global p1 p2 p3;
-    global theta1 theta2 theta3 theta4 theta5 theta6 theta7 d t1 t2 t3;
-
+    global p1 p2 p3 v1 v2 v3;
+    
     theta1 = input(1);
     theta2 = input(2);
     theta3 = input(3);
@@ -13,10 +13,7 @@ function dist = bhand_ik(input)
     theta6 = input(6);
     theta7 = input(7);
     d      = input(8);
-    t1     = input(9);
-    t2     = input(10);
-    t3     = input(11);
- 
+
     T01=[cos(theta1)  -sin(theta1)   0     0 ;
          sin(theta1)  cos(theta1)    0     0; 
          0            0              1     h1; 
@@ -89,31 +86,65 @@ function dist = bhand_ik(input)
           0              0                0     1];
 
 
+    P0=[0; 0; 0;1];
     P=[lf2;0;0;1];
-    L1=T01*T12*T23*T34*T451*T561*T671*P;
-    L2=T01*T12*T23*T34*T452*T562*T672*P;
-    L3=T01*T12*T23*T34*T453*T563*T673*P;
-    
-    lower_link_1 = T01*T12*T23*T34*T451*T561*T671*[1 0 0 1]';
-    sqr = sqrt(lower_link_1(1)^2 + lower_link_1(2)^2 + lower_link_1(3)^2);
-    lower_link_1 = lower_link_1 / sqr;
-    
-    lower_link_2 = T01*T12*T23*T34*T452*T562*T672*[1 0 0 1]';
-    sqr = sqrt(lower_link_2(1)^2 + lower_link_2(2)^2 + lower_link_2(3)^2);
-    lower_link_2 = lower_link_2 / sqr;
-    
-    lower_link_3 = T01*T12*T23*T34*T453*T563*T673*[1 0 0 1]';
-    sqr = sqrt(lower_link_3(1)^2 + lower_link_3(2)^2 + lower_link_3(3)^2);
-    lower_link_3 = lower_link_3 / sqr;
-    
-%     dist = (L1(1)/L1(4)-p1(1))^2+(L1(2)/L1(4)-p1(2))^2+(L1(3)/L1(4)-p1(3))^2 ...
-%          + (L2(1)/L2(4)-p2(1))^2+(L2(2)/L2(4)-p2(2))^2+(L2(3)/L2(4)-p2(3))^2 ...
-%          + (L3(1)/L3(4)-p3(1))^2+(L3(2)/L3(4)-p3(2))^2+(L3(3)/L3(4)-p3(3))^2;
-     
-     
-    dist = dot(lower_link_1, p1)^2 ...
-         + dot(lower_link_2, p2)^2 ...
-         + dot(lower_link_3, p3)^2;
 
+    P1=T01*P0;
+    P2=T01*T12*P0;
+    P3=T01*T12*T23*P0;
+    P4=T01*T12*T23*T34*P0;
+    
+    P51=T01*T12*T23*T34*T451*P0;
+    P61=T01*T12*T23*T34*T451*T561*P0;
+    P71=T01*T12*T23*T34*T451*T561*T671*P0;
+    P712=T01*T12*T23*T34*T451*T561*T671*P;
+    
+    
+    P52=T01*T12*T23*T34*T452*P0;
+    P62=T01*T12*T23*T34*T452*T562*P0;
+    P72=T01*T12*T23*T34*T452*T562*T672*P0;
+    P722=T01*T12*T23*T34*T452*T562*T672*P;
+    
+    P53=T01*T12*T23*T34*T453*P0;
+    P63=T01*T12*T23*T34*T453*T563*P0;
+    P73=T01*T12*T23*T34*T453*T563*T673*P0;
+    P732=T01*T12*T23*T34*T453*T563*T673*P;
+
+
+
+    plot3([P0(1), P1(1)],[P0(2),P1(2)],[P0(3),P1(3)],'LineWidth',3);
+    hold on;
+    plot3([P1(1), P2(1)],[P1(2),P2(2)],[P1(3),P2(3)],'LineWidth',3);
+    plot3([P2(1), P3(1)],[P2(2),P3(2)],[P2(3),P3(3)],'LineWidth',3);
+    plot3([P3(1), P4(1)],[P3(2),P4(2)],[P3(3),P4(3)],'LineWidth',3);
+    
+    plot3([P4(1), P51(1)],[P4(2),P51(2)],[P4(3),P51(3)],'LineWidth',3, 'Color','r');
+    plot3([P51(1), P61(1)],[P51(2),P61(2)],[P51(3),P61(3)],'LineWidth',3, 'Color','r');
+    plot3([P61(1), P71(1)],[P61(2),P71(2)],[P61(3),P71(3)],'LineWidth',3,'Color', 'r');
+    plot3([P71(1), P712(1)],[P71(2),P712(2)],[P71(3),P712(3)],'LineWidth',3, 'Color', 'r');
+    
+    
+    plot3([P4(1), P52(1)],[P4(2),P52(2)],[P4(3),P52(3)],'LineWidth',3,'Color', 'g');
+    plot3([P52(1), P62(1)],[P52(2),P62(2)],[P52(3),P62(3)],'LineWidth',3,'Color', 'g');
+    plot3([P62(1), P72(1)],[P62(2),P72(2)],[P62(3),P72(3)],'LineWidth',3,'Color', 'g');
+    plot3([P72(1), P722(1)],[P72(2),P722(2)],[P72(3),P722(3)],'LineWidth',3,'Color', 'g');
+    
+    plot3([P4(1), P53(1)],[P4(2),P53(2)],[P4(3),P53(3)],'LineWidth',3,'Color', 'b');
+    plot3([P53(1), P63(1)],[P53(2),P63(2)],[P53(3),P63(3)],'LineWidth',3, 'Color','b');
+    plot3([P63(1), P73(1)],[P63(2),P73(2)],[P63(3),P73(3)],'LineWidth',3, 'Color','b');
+    plot3([P73(1), P732(1)],[P73(2),P732(2)],[P73(3),P732(3)],'LineWidth',3,'Color', 'b');
+    
+    plot3([p1(1), p1(1)+v1(1)], [p1(2), p1(2)+v1(2)], [p1(3), p1(3)+v1(3)], 'Color','r' );
+    plot3([p2(1), p2(1)+v2(1)], [p2(2), p2(2)+v2(2)], [p2(3), p2(3)+v2(3)], 'Color','g');
+    plot3([p3(1), p3(1)+v3(1)], [p3(2), p3(2)+v3(2)], [p3(3), p3(3)+v3(3)], 'Color','b');
+    
+    plot3(p1(1), p1(2), p1(3), '*', 'Color', 'r');
+    plot3(p2(1), p2(2), p2(3), '.', 'Color', 'g');
+    plot3(p3(1), p3(2), p3(3), 'o', 'Color', 'b');
+    
+    grid on;
+    axis('equal'); 
+    
+    stop = false;
 end
 
