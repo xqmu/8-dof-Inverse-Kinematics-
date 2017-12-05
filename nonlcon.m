@@ -1,4 +1,4 @@
-function [c, ceq ] = ineqcon(input)
+function [c, ceq ] = nonlcon(input)
 %IEQULCON Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -97,13 +97,13 @@ ceq(1)=Pp1(2)*v1(3)-Pp1(3)*v1(2);
 ceq(2)=Pp1(1)*v1(3)-Pp1(3)*v1(1);
 ceq(3)=Pp1(1)*v1(2)-Pp1(2)*v1(1);
 
-% ceq(4)=Pp2(2)*v2(3)-Pp2(3)*v2(2);
-% ceq(5)=Pp2(1)*v2(3)-Pp2(3)*v2(1);
-% ceq(6)=Pp2(1)*v2(2)-Pp2(2)*v2(1);
-% 
-% ceq(7)=Pp3(2)*v3(3)-Pp3(3)*v3(2);
-% ceq(8)=Pp3(1)*v3(3)-Pp3(3)*v3(1);
-% ceq(9)=Pp3(1)*v3(2)-Pp3(2)*v3(1);
+ceq(4)=Pp2(2)*v2(3)-Pp2(3)*v2(2);
+ceq(5)=Pp2(1)*v2(3)-Pp2(3)*v2(1);
+ceq(6)=Pp2(1)*v2(2)-Pp2(2)*v2(1);
+
+ceq(7)=Pp3(2)*v3(3)-Pp3(3)*v3(2);
+ceq(8)=Pp3(1)*v3(3)-Pp3(3)*v3(1);
+ceq(9)=Pp3(1)*v3(2)-Pp3(2)*v3(1);
 
 end
 
