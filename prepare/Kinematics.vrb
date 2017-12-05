@@ -1,0 +1,3 @@
+\frametitle{Rigid Motion in R$^3$}
+A configuration of the system consists of the pair ($p_{ab}, R_{ab}$), and the configuration of the system if the product space of $\mathbb{R}^3$ with $SO(3)$, which shall be denoted as $SE(3)$ (for special Euclidean group):
+$$SE(3) = \mathbb{R}^3 \times SO(3)$$
