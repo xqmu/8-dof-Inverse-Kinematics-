@@ -1,8 +1,8 @@
-\frametitle{Quadratic Programming Solution}
-At each major iteraion, a QP problem of the following form is solved
-$$\min {1 \over 2} d^\top H_k d + c^\top d$$
-\begin{eqnarray*}
-A_i d = b_i, \quad i = 1,\cdots , m_e \\
-A_i d = b_i, \quad i \leq m_e + 1,\cdots , m
-\end{eqnarray*}
+\frametitle{Line Search and Merit Function}
+The solution to the QP subproblem produces a vector $d_k$, which is used to form a new iterate
+$$\boldsymbol{x}_{k+1} = \boldsymbol{x}_k + \alpha \boldsymbol{d}_k$$
+The step length parameter $\alpha_k$ is determined in order to produce a sufficient decrease in a \textbf{merit function}.
 
+Merit Function:
+$$\Psi = f(x) + \sum_{i = 1}^{m_e} r_i \cdot g_i(x) + \sum_{i = m_e + 1}^{m} r_i \cdot \max [0, g_i(x)]$$
+where $r_i$ is a penalty parameter.
