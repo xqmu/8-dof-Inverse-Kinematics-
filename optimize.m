@@ -56,9 +56,9 @@ v1=-[-0.032135333078231 0.032135333078231 0.02084803913806   0];
 v2=-[-0.045216672051166 -0.012115770760533 0.017568741204067 0];
 v3=-[0.048161245088541 -0.012904766727952 0.003736504679321  0];
 
-opts = optimoptions('fmincon','Display','iter','Algorithm','sqp', 'PlotFcn', {  @bhand_plot_func });
+opts = optimoptions('fmincon','Display','iter','Algorithm','interior-point', 'PlotFcn', {  @bhand_plot_func });
 [x,fval,exitflag,output,lambda,grad,hessian]=fmincon(@bhand_ik, x0, [],[], [],[], lb, ub, @nonlcon,opts);
     
 close(Robot_Movie);
-% draw_bhand(x); 
+%  draw_bhand(x); 
 

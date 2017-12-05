@@ -38,7 +38,9 @@ ub = [joint1_up, joint2_up, joint3_up, bhand_j4_up, bhand_j1_up, bhand_j2_up, bh
 
 syms theta1 theta2 theta3 theta4 theta5 theta6 theta7 d; 
 
-theta1=pi/4; theta2=-pi/3; theta3=pi/2; theta4=pi/6; theta5=pi/6; theta6=pi/5; theta7=pi/3; d=-0.2; 
+% theta1=pi/4; theta2=-pi/3; theta3=pi/2; theta4=pi/6; theta5=pi/6; theta6=pi/5; theta7=pi/3; d=-0.2; 
+
+theta1=pi/4; theta2=pi/3; theta3=pi/4; theta4=pi/3; theta5=pi/3; theta6=pi/3; theta7=pi/3; d=-0.1; 
 
 a=45 /140;%ration betwwen rotation angles of upperlink and lowerlink
 h1=0.487;    %hight of the first link of Adept
@@ -175,6 +177,7 @@ Pp1=T01*T12*T23*T34*T451*T561*T671*T*[0.05; 0;0;0];
 
 plot3([P0(1), P1(1)],[P0(2),P1(2)],[P0(3),P1(3)],'LineWidth',3);
 hold on;
+
 plot3([P1(1), P2(1)],[P1(2),P2(2)],[P1(3),P2(3)],'LineWidth',3);
 plot3([P2(1), P3(1)],[P2(2),P3(2)],[P2(3),P3(3)],'LineWidth',3);
 plot3([P3(1), P4(1)],[P3(2),P4(2)],[P3(3),P4(3)],'LineWidth',3);
@@ -195,9 +198,21 @@ plot3([P53(1), P63(1)],[P53(2),P63(2)],[P53(3),P63(3)],'LineWidth',3);
 plot3([P63(1), P73(1)],[P63(2),P73(2)],[P63(3),P73(3)],'LineWidth',3);
 plot3([P73(1), P732(1)],[P73(2),P732(2)],[P73(3),P732(3)],'LineWidth',3);
 
-plot3([P71(1),P71(1)- Pp1(1)],[P71(2),P71(2)-Pp1(2)],[P71(3),P71(3)-Pp1(3)],'LineWidth',3);
-plot3([P72(1),P72(1)- Pp2(1)],[P72(2),P72(2)-Pp2(2)],[P72(3),P72(3)-Pp2(3)],'LineWidth',3);
-plot3([P73(1),P73(1)- Pp3(1)],[P73(2),P73(2)-Pp3(2)],[P73(3),P73(3)-Pp3(3)],'LineWidth',3);
+% plot3([P71(1),P71(1)- Pp1(1)],[P71(2),P71(2)-Pp1(2)],[P71(3),P71(3)-Pp1(3)],'LineWidth',3);
+% plot3([P72(1),P72(1)- Pp2(1)],[P72(2),P72(2)-Pp2(2)],[P72(3),P72(3)-Pp2(3)],'LineWidth',3);
+% plot3([P73(1),P73(1)- Pp3(1)],[P73(2),P73(2)-Pp3(2)],[P73(3),P73(3)-Pp3(3)],'LineWidth',3);
+
+% quiver3(0,0,0,1,0,0,0.1,'r','LineWidth',3);
+% quiver3(0,0,0,0,1,0,0.1,'g','filled','LineWidth',3);
+% quiver3(0,0,0,0,0,1,0.1,'b','filled','LineWidth',3);
+% 
+% f2x=T01*[0.1;0;0;1];
+% f2y=T01*[0;0.1;0;1];
+% f2z=T01*[0;0;0.1;1];
+% 
+% quiver3(P1(1),P1(2),P1(3),P1(1)+f2x(1),P1(2)+f2x(2),P1(3)+f2x(3),1,'r','LineWidth',3);
+% quiver3(P1(1),P1(2),P1(3),P1(1)+f2y(1),P1(2)+f2y(2),P1(3)+f2y(3),1,'g','filled','LineWidth',3);
+% quiver3(P1(1),P1(2),P1(3),P1(1)+f2z(1),P1(2)+f2z(2),P1(3)+f2z(3),1,'b','filled','LineWidth',3);
 
 grid on;
 axis('equal'); 
