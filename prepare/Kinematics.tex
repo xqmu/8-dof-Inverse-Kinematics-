@@ -238,6 +238,17 @@ A_i d = b_i, \quad i \leq m_e + 1,\cdots , m
 \end{eqnarray*}
 \end{frame}
 
+\begin{frame}[fragile]{Quadratic Programming Initialization}
+    The algorithm requires a feasible point to start. If the current point from SQP method is not feasible, then we can find a point by solving the linear programming problem.
+    
+    $$\min \gamma$$
+    such that 
+    \begin{eqnarray*}
+    	\Ab_i \xb & = & \bb_i, i = 1, \cdots , m_e \\
+    	\Ab_i \xb  - \gamma & \leq & \bb_i, i = m_e + 1, \cdots , m
+    \end{eqnarray*}
+\end{frame}
+
 \begin{frame}[fragile]{Line Search and Merit Function}
 The solution to the QP subproblem produces a vector $d_k$, which is used to form a new iterate
 $$\boldsymbol{x}_{k+1} = \boldsymbol{x}_k + \alpha \boldsymbol{d}_k$$
@@ -248,9 +259,9 @@ $$\Psi = f(x) + \sum_{i = 1}^{m_e} r_i \cdot g_i(x) + \sum_{i = m_e + 1}^{m} r_i
 where $r_i$ is a penalty parameter.
 \end{frame}
 
-\begin{frame}[fragile]{Demo}
+\begin{frame}[fragile]{Result}
     \begin{center}
-\includegraphics[width=4cm, height=5cm]{result.png}
+\includegraphics[width=8cm, height=8cm]{reult.png}
      \end{center}
 \end{frame}
 
