@@ -1,4 +1,22 @@
-\frametitle{Result}
-\begin{center}
-\includegraphics[width=8cm, height=8cm]{reult.png}
-     \end{center}
+\frametitle{Problem Formulation}
+\[
+\min \ \  \sum_{i=0}^{2} \frac{\|(\pb_i-\qb_{i1})\times (\pb_i-\qb_{i2}) \|}{\|\qb_i-\qb_{i2}\|}
+\]
+
+Subject to
+\[
+\nb_i \times \lb_{\boti} =0
+\]
+\[
+\nb_i * \lb_{\boti} \geq 0
+\]
+\[
+ t_i* \qb_{i1} +(1-t_i) * \qb_{i2} = \pb_i
+\]
+\[
+lb_i \leq \theta_i \leq ub_i  \ \ \ \     i=0, 1, ..., 7
+\]
+\[
+0 \leq t_i  \leq 1    \ \ \ \     i=0, 1, 2
+\]
+

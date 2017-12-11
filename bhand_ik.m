@@ -122,9 +122,9 @@ function dist = bhand_ik(input)
     p22 = p22(1:3);
     p32 = p32(1:3);
     
-    plot3([p11(1), p12(1)],[p11(2),p12(2)],[p11(3),p12(3)],'LineWidth',3,'Color', 'b');
-    hold on;
-    plot3(p1(1), p1(2), p1(3), '*', 'Color', 'r');
+%     plot3([p11(1), p12(1)],[p11(2),p12(2)],[p11(3),p12(3)],'LineWidth',3,'Color', 'b');
+%     hold on;
+%     plot3(p1(1), p1(2), p1(3), '*', 'Color', 'r');
     
     p10 = p1(1:3);
     p20 = p2(1:3);
