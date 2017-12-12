@@ -380,6 +380,7 @@
 \usepackage{amsmath}
 \usepackage{my_def_env} 
 \usepackage{my_def_sym}
+\usepackage{graphicx}
 
 \begin{document}
 %
@@ -503,14 +504,25 @@ Inverse Kinematics, Robotics, Nonlinear optimization, Sequential Quadratic Progr
 % 
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
-\IEEEPARstart{R}{obot}  has been widely used in industry and research. In Robotics, inverse kinematics is a basic problem which has been 
+\IEEEPARstart{I}{nverse} kinematics is one of the fundamental problems in robotics research which objective is to find a robot configuration that leads the robot end effector to desired position and orientation within the limits of the robot manipulator.In other words, inverse kinematics transfers the end effector task space coordinates into joint space coordinates. The position and orientation of the end effector are nonlinearly related to the joint variables which number is the DOF of the robot. \\
+
+In three-dimensional space, a manipulator with six or more DOF is able to attain any end effector position and  orientation. If the manipulator has six DOF, the system with six nonlinear equations can be solved for six joint variables. However, if the robot manipulator has more than six DOF, it is underdetermined since it has more variable than equations. The inverse kinematics problem can be treated as a root finding problem of multi-variables nonlinear polynomial equations. Unfortunately, it is hard to find the analytical solution. \\
+
+Numerical methods like the Newton-Raphsom(NR) method can be used to solve inverse kinematics problem. The NR method can find solutions if and only if the Jacobian matrix is always reversible and the equations are solvable. The former condition means that the robot should be nonredundant, namely, the number of variables should be the same as the number of equations and constraints, and the robot will not pass through the singular points during moving from the initial configuration to the final configuration. The latter one means the destination position and orientation for the end effector should within the workspace of the robot manipulator. \\ 
+
+Usually, the inverse kinematics problem should be considered under the task for robot manipulator. The specification of the robot task will introduce addtional constraints for this problem which make  it much more complex. Nonlinear optimization algorithms become a good choice for solving inverse kinematics. \\
+
+The organization of this report is as follows: The kinematics problem is introduced in Section II. Section III presents the formulation of eight DOF inverse kinematics problem for grasping objects. Section IV shows the principles of SQP algorithm. Simulation result and discussions are  in Section V.  
+
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 
 
 
-\subsection{ROBOT KINEMATICS}
+\section{ROBOT KINEMATICS}
 Kinematics treats motion of robot manipulator without considering the forces cause it. Within kinematics, the relationship between position, velocity, acceleration and all higher order derivatives of the position variables can be studied. In other words, kinematics of robot manipulators refers to all the geometrical and time-based properties of the motion. \\
+
+Inverse kinematics is given a desired position in the world frame solving for the joint variables . Since the relationship between joint variables and the position if nonlinear and the number of variables is more then the equations in the relationship, it's impossible to solve the inverse kinematics problem directly. \\
 
 In kinematics, the transformation matrix $\Tb$ is necessary, 
 \[
@@ -536,23 +548,35 @@ In kinematics, the transformation matrix $\Tb$ is necessary,
 in which $\Rb$ is the rotation matrix and $\db$ is the transition vector. Elements in $\Rb$ and $\db$ are decided by the joint variables of the robot manipulator. Let $\Theta = (\theta_1, \theta_2, ..., \theta_n)$ be the joint variable vector. We can rewrite $\Rb$,$\db$ and $\Tb$ as $\Rb(\Theta)$,$\db(\Theta)$ and $\Tb(\Theta)$.  \\
 
 Robot manipulator is multiple joints system.  To calculate the position of the end effector in the world frame, local frame system for joints should be created and each joint has one aligned local frame.
- Let $\Tb_0$ be the world/base frame and $\Tb_i^{i+1}$ be the transformation matrix from the $i$th frame to $i+1$th frame.  Then we have 
+ The first frame is the world/base frame and $\Tb_i^{i+1}$ is the transformation matrix from the $i$th frame to $i+1$th frame.  Then we have 
 \[
 \pb_w = \Tb_0^1*\Tb_1^2*... *\Tb_{n-1}^n * \pb_e \tag{2}
 \]
- in which $\pb_w$ is the position of one point in the world frame, $\pb_e$ is the position in the end effector's local frame and $n$ is the degree of freedom of the robot system. \\
- 
- Inverse kinematics is given a desired position in the world frame solving for the joint variables . Since the relationship between joint variables and the position if nonlinear and the number of variables is more then the equations in the relationship, it's impossible to solve the inverse kinematics problem directly. \\
+ in which $\pb_w$ is the position of one point in the world frame, $\pb_e$ is the position in the end effector's local frame and $n$ is the degree of freedom of the robot system.\\
 
-\subsection{PROBLEM FORMULATION}
-Inverse kinematics usually comes with  specific robot tasks.  So when we try to solve this problem, it is necessary to consider the task constraints. Moreover, robot has it's own workspace, which also can cause limitations for the inverse kinematics problem. \\ 
+Our robot system contains one four DOF robot arm and one four DOF robot hand. So the system's DOF is eight. The robot system and it's model with local frames are shown in Fig 1. 
+ 
+\begin{figure}[!t]
+\centering
+\includegraphics[width=1.5in, height=2.0in]{IMG_5860.jpg}
+\includegraphics[width=2.5in]{frames.jpg}
+\caption{Frame system for the robot manipulator with red line as x direction, green line as y direction and blue line as z direction. }
+\label{fig_sim }
+\end{figure}
+
+ 
+
+\section{PROBLEM FORMULATION}
+Inverse kinematics usually comes with  specific robot tasks.  So when we try to solve this problem, it is necessary to consider the task constraints. Moreover, robot has it's own workspace, which also can introduce limitations for the inverse kinematics problem. \\ 
 
 Consider the grasping task for robot manipulator, which requires the robot's fingers reach desired positions on the surface of the object. This problem can be described as follows:
-\begin{itemize}
-\item All the joint variables should be within the limit of the robot joints
+\begin{itemize} 
+\item All the joint variables should be within the limits of the robot joints
 \item The target points should be located on the lower links of the robot fingers
 \item The lower links should be parallel to the tangential plane of the target points
 \end{itemize} 
+
+The first characteristic means that the solution should be reasonable. If the joints variables are out of the boundary, the robot can't achieve such configuration and the solution is meaningless. The second property comes form the grasping experiment of human beings since we prefer to use the tip part of our hand rather than the plum to grasp objects. The third one regulate the grasping task by guaranteeing the fingers will not insert into the object. \\
 
 The nonlinearity  together with multiple constraints make the inverse kinematics problem much more complex. We can convert it into a nonlinear optimization problem as follows: 
 \[
@@ -586,9 +610,7 @@ Equation (6) and (8) mean that $\pb_i$ is on the segment with two end points $\q
  
 % needed in second column of first page if using \IEEEpubid
 %\IEEEpubidadjcol
-
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
+
 
 
 % An example of a floating figure using the graphicx package.
@@ -734,8 +756,34 @@ A nonlinearly constrained problem can often be solved in fewer iterations than a
 
 At each major iteration a positive definite quasi-Newton approximation of the Hessian of the Lagrangian function, $H$, is calculated using the BFGS method, where $\lambda_i, i = 1,\cdots,m$, is an estimate of the Lagrange multipliers.
 
+
+\section{Experiment and Discussion} 
+During simulation, desired grasping positions and the normal directions of the tangential planes are calculated from the forward kinematics which can make sure the problem has solution. For such kind of desired position and orientation, SQP method can always find a solution.
+Compared with Interior Point method, SQP method converges more fast.For the given position and orientation, SQP method runs in about thirty iterations while the Interior Point method runs in about two hundreds iterations. \\
+ Fig.2 shows that simulations results by using Interior Point method and SQP method. Fig.3 is the convergence process for the SQP method. 
+
+
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{ip.jpg}
+\includegraphics[width=2.5in]{sqp.jpg}
+\caption{ First one shows the simulation result by using Interior Point method and second one presents the simulation result by suing SQP method. }
+\label{fig_sim }
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{reult.png}
+\caption{ Convergence process for the SQP method }
+\label{fig_sim }
+\end{figure}
+
+
 \section{Conclusion}
-The conclusion goes here.
+In this project, we solved the inverse kinematics problem for our eight DOF robot system by using nonlinear optimization algorithm. \\
+SQP method can always converge to a reasonable destination. Since it does not rely on the inverse of Jacobian matrix, singular points will not effect the solution of it. We also test other nonlinear optimization methods, some of them not convergent and some are quite slow. SQP is stable and fast for solving the inverse kinematics problem for grasping task.  \\
+
 
 
 
@@ -811,6 +859,15 @@ H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
 
 \end{thebibliography}
 
+\begin{thebibliography}{2}
+\bibitem{IEEEhowto:kopka}
+Tomomichi Sugihara, \emph{Solvability-Unconcerned Inverse Kinematics by the Levenberg–Marquardt Method
+}\hskip 1em plus
+  0.5em minus 0.4em\relax IEEE TRANSACTIONS ON ROBOTICS, VOL. 27, NO. 5, OCTOBER 2011. 
+
+\end{thebibliography}
+%Solvability-Unconcerned Inverse Kinematics by the Levenberg–Marquardt Method
+
 % biography section
 % 
 % If you have an EPS/PDF photo (graphicx package needed) extra braces are
@@ -822,22 +879,22 @@ H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
 %\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
 % or if you just want to reserve a space for a photo:
 
-\begin{IEEEbiography}{Michael Shell}
-Biography text here.
-\end{IEEEbiography}
+%\begin{IEEEbiography}{Michael Shell}
+%Biography text here.
+%\end{IEEEbiography}
 
 % if you will not have a photo at all:
-\begin{IEEEbiographynophoto}{John Doe}
-Biography text here.
-\end{IEEEbiographynophoto}
+%\begin{IEEEbiographynophoto}{John Doe}
+%Biography text here.
+%\end{IEEEbiographynophoto}
 
 % insert where needed to balance the two columns on the last page with
 % biographies
 %\newpage
 
-\begin{IEEEbiographynophoto}{Jane Doe}
-Biography text here.
-\end{IEEEbiographynophoto}
+%\begin{IEEEbiographynophoto}{Jane Doe}
+%Biography text here.
+%\end{IEEEbiographynophoto}
 
 % You can push biographies down or up by placing
 % a \vfill before or after them. The appropriate
