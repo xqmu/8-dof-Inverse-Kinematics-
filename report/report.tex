@@ -506,8 +506,7 @@ Inverse Kinematics, Robotics, Nonlinear optimization, Sequential Quadratic Progr
 \IEEEPARstart{R}{obot}  has been widely used in industry and research. In Robotics, inverse kinematics is a basic problem which has been 
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
-
-
+
 
 \subsection{ROBOT KINEMATICS}
 Kinematics treats motion of robot manipulator without considering the forces cause it. Within kinematics, the relationship between position, velocity, acceleration and all higher order derivatives of the position variables can be studied. In other words, kinematics of robot manipulators refers to all the geometrical and time-based properties of the motion. \\
@@ -685,54 +684,8 @@ Subsubsection text here.
 % footnotes above bottom floats. This can be corrected via the
 % \fnbelowfloat command of the stfloats package.
 
-\section{Sequential Quadratic Programming}
 
-In constrained optimization, the general aim is to transform the problem into an easier subproblem that can then be solved and used as the basis of an iterative process. A characteristic of a large class of early methods is the translation of the constrained problem to a basic unconstrained problem by using a penalty function for constraints that are near or beyond the constraint boundary. In this way the constrained problem is solved using a sequence of parameterized unconstrained optimizations, which in the limit (of the sequence) converge to the constrained problem. These methods are now considered relatively inefficient and have been replaced by methods that have focused on the solution of the Karush-Kuhn-Tucker (KKT) equations. The KKT equations are necessary conditions for optimality for a constrained optimization problem. If the problem is a so-called convex programming problem, that is, $f(x)$ and $g_i(x)$, $i = 1,\cdots,m$, are convex functions, then the KKT equations are both necessary and sufficient for a global solution point.
 
-The Kuhn-Tucker equations can be stated as
-
-\begin{equation}
-	\min f(x)
-\end{equation}
-
-subject to 
-\begin{eqnarray}
-	g_i(x) & = & 0, \quad i = 1, \cdots , m_e\\
-	g_i(x) & \leq & 0, \quad i = m_e+1, \cdots, m \\
-	\nabla f(\xb^*) + \sum_{i=1}^m \lambda_i \cdot \nabla g_i(\xb^*) & = & 0 \label{eq:kkt-gradient}\\
-	\lambda_i \cdot g_i(\xb^*) & = & 0, \quad i = 1, \cdots , m_e\\
-	\lambda_i & \geq & 0, \quad  i = m_e+1, \cdots, m
-\end{eqnarray}
-
-The equation (\ref{eq:kkt-gradient}) describes a canceling of the gradients between the objective function and the active constraints at the solution point. For the gradients to be canceled, Lagrange multipliers ($\lambda_i, i = 1,\cdots,m$) are necessary to balance the deviations in magnitude of the objective function and constraint gradients. Because only active constraints are included in this canceling operation, constraints that are not active must not be included in this operation and so are given Lagrange multipliers equal to 0. This is stated implicitly in the last two Kuhn-Tucker equations.
-
-The solution of the KKT equations forms the basis to many nonlinear programming algorithms. These algorithms attempt to compute the Lagrange multipliers directly. Constrained quasi-Newton methods guarantee superlinear convergence by accumulating second-order information regarding the KKT equations using a quasi-Newton updating procedure. These methods are commonly referred to as Sequential Quadratic Programming (SQP) methods, since a QP subproblem is solved at each major iteration (also known as Iterative Quadratic Programming, Recursive Quadratic Programming, and Constrained Variable Metric methods).
-
-\subsection{Active Set Method}
-
- Active Set method allows to closely mimic Newton's method for constrained optimization just as is done for unconstrained optimization. At each major iteration, an approximation is made of the Hessian of the Lagrangian function using a quasi-Newton updating method. This is then used to generate a QP subproblem whose solution is used to form a search direction for a line search procedure. 
- 
-\subsection{Quadratic Subproblem}
-
-\begin{equation}
-	\min {1 \over 2} \db^\top H_k \db + \nabla f(\xb_k)^\top \db
-\end{equation}
-subject to:
-\begin{eqnarray}
-	\nabla g_i(\xb_k)^\top \db + g_i(\xb_k) & = & 0	, \quad i = 1,\cdots , m_e \\
-	\nabla g_i(\xb_k)^\top \db + g_i(\xb_k) & \leq & 0	, \quad i = m_e + 1,\cdots , m
-\end{eqnarray}
-This subproblem can be solved using any QP algorithm. The solution is used to form a new iterate
-\begin{equation}
-	\xb_{k+1} = \xb_k + \alpha_k \db_k
-\end{equation}
-The step length parameter $\alpha_k$ is determined by an appropriate line search procedure so that a sufficient decrease in a merit function is obtained. The matrix $H_k$ is a positive definite approximation of the Hessian matrix of the Lagrangian function. $H_k$ can be updated by any of the quasi-Newton methods, although the BFGS method appears to be the most popular.
-
-A nonlinearly constrained problem can often be solved in fewer iterations than an unconstrained problem using SQP. One of the reasons for this is that, because of limits on the feasible area, the optimizer can make informed decisions regarding directions of search and step length.
-
-\subsection{Updating the Hessian Matrix}
-
-At each major iteration a positive definite quasi-Newton approximation of the Hessian of the Lagrangian function, $H$, is calculated using the BFGS method, where $\lambda_i, i = 1,\cdots,m$, is an estimate of the Lagrange multipliers.
 
 \section{Conclusion}
 The conclusion goes here.
