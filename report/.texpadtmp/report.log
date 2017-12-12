@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  12 DEC 2017 13:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  12 DEC 2017 14:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -288,7 +288,10 @@ LaTeX Warning: Unused global option(s):
 
 (/Users/Xiaoqian/Documents/MATLAB/672/8-dof-Inverse-Kinematics-/report/.texpadtmp/report.aux
 
-LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
 
 
 LaTeX Warning: Label `fig_sim ' multiply defined.
@@ -428,11 +431,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 507--508
  []
 
 
-Underfull \hbox (badness 2150) in paragraph at lines 509--510
-\T1/ptm/m/n/10 find-ing prob-lem of multi-variables non-lin-ear poly-no-mial
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 509--510
 
  []
@@ -460,11 +458,6 @@ Underfull \hbox (badness 2020) in paragraph at lines 513--514
 
 Underfull \hbox (badness 10000) in paragraph at lines 513--514
 
- []
-
-
-Underfull \hbox (badness 1990) in paragraph at lines 523--524
-\T1/ptm/m/n/10 con-sid-er-ing the forces cause it. Within kine-mat-ics, the
  []
 
 
@@ -568,15 +561,15 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4558 strings out of 493089
- 62754 string characters out of 6134842
- 128678 words of memory out of 5000000
- 7905 multiletter control sequences out of 15000+600000
+ 4559 strings out of 493089
+ 62756 string characters out of 6134842
+ 127681 words of memory out of 5000000
+ 7906 multiletter control sequences out of 15000+600000
  155992 words of font info for 206 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  37i,24n,35p,1067b,271s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/newtx/rntxbmi.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/newtx/rntxmi.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/newtx/rntxmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/newtx/txex-bar.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/txfonts/txmia.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /Users/Xiaoqian/Documents/MATLAB/672/8-dof-Inverse-Kinematics-/report/.texpadtmp/report.pdf (4 pages, 2193980 bytes).
+Output written on /Users/Xiaoqian/Documents/MATLAB/672/8-dof-Inverse-Kinematics-/report/.texpadtmp/report.pdf (4 pages, 2194562 bytes).
 PDF statistics:
  77 PDF objects out of 1000 (max. 8388607)
  52 compressed objects within 1 object stream

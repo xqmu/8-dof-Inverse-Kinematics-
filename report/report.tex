@@ -506,9 +506,9 @@ Inverse Kinematics, Robotics, Nonlinear optimization, Sequential Quadratic Progr
 % and "HIS" in caps to complete the first word.
 \IEEEPARstart{I}{nverse} kinematics is one of the fundamental problems in robotics research which objective is to find a robot configuration that leads the robot end effector to desired position and orientation within the limits of the robot manipulator.In other words, inverse kinematics transfers the end effector task space coordinates into joint space coordinates. The position and orientation of the end effector are nonlinearly related to the joint variables which number is the DOF of the robot. \\
 
-In three-dimensional space, a manipulator with six or more DOF is able to attain any end effector position and  orientation. If the manipulator has six DOF, the system with six nonlinear equations can be solved for six joint variables. However, if the robot manipulator has more than six DOF, it is underdetermined since it has more variable than equations. The inverse kinematics problem can be treated as a root finding problem of multi-variables nonlinear polynomial equations. Unfortunately, it is hard to find the analytical solution. \\
+In three-dimensional space, a manipulator with six or more DOF is able to attain any end effector position and  orientation. If the manipulator has six DOF, the system with six nonlinear equations can be solved for six joint variables. However, if the robot manipulator has more than six DOF, it is underdetermined since it has more variable than equations[3]. The inverse kinematics problem can be treated as a root finding problem of multi-variables nonlinear polynomial equations. Unfortunately, it is hard to find the analytical solution. \\
 
-Numerical methods like the Newton-Raphsom(NR) method can be used to solve inverse kinematics problem. The NR method can find solutions if and only if the Jacobian matrix is always reversible and the equations are solvable. The former condition means that the robot should be nonredundant, namely, the number of variables should be the same as the number of equations and constraints, and the robot will not pass through the singular points during moving from the initial configuration to the final configuration. The latter one means the destination position and orientation for the end effector should within the workspace of the robot manipulator. \\ 
+Numerical methods like the Newton-Raphsom(NR) method can be used to solve inverse kinematics problem. The NR method can find solutions if and only if the Jacobian matrix is always reversible and the equations are solvable. The former condition means that the robot should be nonredundant, namely, the number of variables should be the same as the number of equations and constraints, and the robot will not pass through the singular points during moving from the initial configuration to the final configuration[2]. The latter one means the destination position and orientation for the end effector should within the workspace of the robot manipulator. \\ 
 
 Usually, the inverse kinematics problem should be considered under the task for robot manipulator. The specification of the robot task will introduce addtional constraints for this problem which make  it much more complex. Nonlinear optimization algorithms become a good choice for solving inverse kinematics. \\
 
@@ -520,7 +520,7 @@ The organization of this report is as follows: The kinematics problem is introdu
 
 
 \section{ROBOT KINEMATICS}
-Kinematics treats motion of robot manipulator without considering the forces cause it. Within kinematics, the relationship between position, velocity, acceleration and all higher order derivatives of the position variables can be studied. In other words, kinematics of robot manipulators refers to all the geometrical and time-based properties of the motion. \\
+Kinematics treats motion of robot manipulator without considering the forces cause it[4]. Within kinematics, the relationship between position, velocity, acceleration and all higher order derivatives of the position variables can be studied. In other words, kinematics of robot manipulators refers to all the geometrical and time-based properties of the motion. \\
 
 Inverse kinematics is given a desired position in the world frame solving for the joint variables . Since the relationship between joint variables and the position if nonlinear and the number of variables is more then the equations in the relationship, it's impossible to solve the inverse kinematics problem directly. \\
 
@@ -857,13 +857,25 @@ The authors would like to thank...
 H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
   0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
 
-\end{thebibliography}
+%\end{thebibliography}
 
-\begin{thebibliography}{2}
-\bibitem{IEEEhowto:kopka}
+%\begin{thebibliography}{2}
+\bibitem{}
 Tomomichi Sugihara, \emph{Solvability-Unconcerned Inverse Kinematics by the Levenberg–Marquardt Method
 }\hskip 1em plus
-  0.5em minus 0.4em\relax IEEE TRANSACTIONS ON ROBOTICS, VOL. 27, NO. 5, OCTOBER 2011. 
+  0.5em minus 0.4em\relax IEEE Transactions on Robotics , Vol.27, No.5, Oct 2011. 
+
+%\end{thebibliography}
+
+%\begin{thebibliography}{3}
+\bibitem{}
+Andrew A. Goldenberg, B. Benhabib, Robert G. Fenton, \emph{A Complete Generalized Solution to the Inverse Kinematics of Robots
+}\hskip 1em plus
+  0.5em minus 0.4em\relax IEEE Journal of Robotics and Automation, Vol. RA-1, No.1, Mar 1985. 
+\bibitem{}
+Hohn J. Craig,  \emph{Introduction to Robotics Mechanics and Control}, 2nd~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax
+
 
 \end{thebibliography}
 %Solvability-Unconcerned Inverse Kinematics by the Levenberg–Marquardt Method
