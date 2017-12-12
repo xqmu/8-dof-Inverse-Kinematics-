@@ -202,69 +202,17 @@ plot3([P73(1), P732(1)],[P73(2),P732(2)],[P73(3),P732(3)],'LineWidth',3);
 % plot3([P72(1),P72(1)- Pp2(1)],[P72(2),P72(2)-Pp2(2)],[P72(3),P72(3)-Pp2(3)],'LineWidth',3);
 % plot3([P73(1),P73(1)- Pp3(1)],[P73(2),P73(2)-Pp3(2)],[P73(3),P73(3)-Pp3(3)],'LineWidth',3);
 
-Tz=[0 -1 0 0 ; 1 0 0 0 ; 0 0 1 0; 0 0 0 1];
-Ty=[0 0 0 -1 ; 0 1 0 0 ; 1 0 0 0; 0 0 0 1];
-
-quiver3(0,0,0,1,0,0,0.1,'r','LineWidth',1);
-quiver3(0,0,0,0,1,0,0.1,'g','LineWidth',1);
-quiver3(0,0,0,0,0,1,0.1,'b','LineWidth',1);
-
-f2x=T01*[0.05;0;0;0];
-f2y=T01*Ty*[0.05;0;0;0];
-f2z=T01*Tz*[0.05;0;0;0];
-
-quiver3(P1(1),P1(2),P1(3),f2x(1),f2x(2),f2x(3),1,'r','LineWidth',1);
-quiver3(P1(1),P1(2),P1(3),f2y(1),f2y(2),f2y(3),1,'g','filled','LineWidth',1);
-quiver3(P1(1),P1(2),P1(3),f2z(1),f2z(2),f2z(3),1,'b','filled','LineWidth',1);
-
-f3x=T01*T12*[0.05;0;0;0];
-f3y=T01*T12*Ty*[0.05;0;0;0];
-f3z=T01*T12*Tz*[0.05;0;0;0];
-
-quiver3(P2(1),P2(2),P2(3),f3x(1),f3x(2),f3x(3),1,'r','LineWidth',1);
-quiver3(P2(1),P2(2),P2(3),f3y(1),f3y(2),f3y(3),1,'g','filled','LineWidth',1);
-quiver3(P2(1),P2(2),P2(3),f3z(1),f3z(2),f3z(3),1,'b','filled','LineWidth',1);
-
-f4x=T01*T12*T23*[0.05;0;0;0];
-f4y=T01*T12*T23*Ty*[0.05;0;0;0];
-f4z=T01*T12*T23*Tz*[0.05;0;0;0];
-
-quiver3(P3(1),P3(2),P3(3),f4x(1),f4x(2),f4x(3),1,'r','LineWidth',1);
-quiver3(P3(1),P3(2),P3(3),f4y(1),f4y(2),f4y(3),1,'g','filled','LineWidth',1);
-quiver3(P3(1),P3(2),P3(3),f4z(1),f4z(2),f4z(3),1,'b','filled','LineWidth',1);
-
-f5x=T01*T12*T23*T34*[0.05;0;0;0];
-f5y=T01*T12*T23*T34*Ty*[0.05;0;0;0];
-f5z=T01*T12*T23*T34*Tz*[0.05;0;0;0];
-
-quiver3(P4(1),P4(2),P4(3),f5x(1),f5x(2),f5x(3),1,'r','LineWidth',1);
-quiver3(P4(1),P4(2),P4(3),f5y(1),f5y(2),f5y(3),1,'g','filled','LineWidth',1);
-quiver3(P4(1),P4(2),P4(3),f5z(1),f5z(2),f5z(3),1,'b','filled','LineWidth',1);
-
-f61x=T01*T12*T23*T34*T452*[0.05;0;0;0];
-f61y=T01*T12*T23*T34*T452*Ty*[0.05;0;0;0];
-f61z=T01*T12*T23*T34*T452*Tz*[0.05;0;0;0];
-
-quiver3(P52(1),P52(2),P52(3),f61x(1),f61x(2),f61x(3),1,'r','LineWidth',1);
-quiver3(P52(1),P52(2),P52(3),f61y(1),f61y(2),f61y(3),1,'g','filled','LineWidth',1);
-quiver3(P52(1),P52(2),P52(3),f61z(1),f61z(2),f61z(3),1,'b','filled','LineWidth',1);
-
-f71x=T01*T12*T23*T34*T452*T562*[0.05;0;0;0];
-f71y=T01*T12*T23*T34*T452*T562*Ty*[0.05;0;0;0];
-f71z=T01*T12*T23*T34*T452*T562*Tz*[0.05;0;0;0];
-
-quiver3(P62(1),P62(2),P62(3),f71x(1),f71x(2),f71x(3),1,'r','LineWidth',1);
-quiver3(P62(1),P62(2),P62(3),f71y(1),f71y(2),f71y(3),1,'g','filled','LineWidth',1);
-quiver3(P62(1),P62(2),P62(3),f71z(1),f71z(2),f71z(3),1,'b','filled','LineWidth',1);
-
-f81x=T01*T12*T23*T34*T452*T562*T672*[0.05;0;0;0];
-f81y=T01*T12*T23*T34*T452*T562*T672*Ty*[0.05;0;0;0];
-f81z=T01*T12*T23*T34*T452*T562*T672*Tz*[0.05;0;0;0];
-
-quiver3(P72(1),P72(2),P72(3),f81x(1),f81x(2),f81x(3),1,'r','LineWidth',1);
-quiver3(P72(1),P72(2),P72(3),f81y(1),f81y(2),f81y(3),1,'g','filled','LineWidth',1);
-quiver3(P72(1),P72(2),P72(3),f81z(1),f81z(2),f81z(3),1,'b','filled','LineWidth',1);
-
+% quiver3(0,0,0,1,0,0,0.1,'r','LineWidth',3);
+% quiver3(0,0,0,0,1,0,0.1,'g','filled','LineWidth',3);
+% quiver3(0,0,0,0,0,1,0.1,'b','filled','LineWidth',3);
+% 
+% f2x=T01*[0.1;0;0;1];
+% f2y=T01*[0;0.1;0;1];
+% f2z=T01*[0;0;0.1;1];
+% 
+% quiver3(P1(1),P1(2),P1(3),P1(1)+f2x(1),P1(2)+f2x(2),P1(3)+f2x(3),1,'r','LineWidth',3);
+% quiver3(P1(1),P1(2),P1(3),P1(1)+f2y(1),P1(2)+f2y(2),P1(3)+f2y(3),1,'g','filled','LineWidth',3);
+% quiver3(P1(1),P1(2),P1(3),P1(1)+f2z(1),P1(2)+f2z(2),P1(3)+f2z(3),1,'b','filled','LineWidth',3);
 
 grid on;
 axis('equal'); 
