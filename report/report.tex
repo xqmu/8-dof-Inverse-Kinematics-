@@ -564,8 +564,6 @@ Our robot system contains one four DOF robot arm and one four DOF robot hand. So
 \label{fig_sim }
 \end{figure}
 
- 
-
 \section{PROBLEM FORMULATION}
 Inverse kinematics usually comes with  specific robot tasks.  So when we try to solve this problem, it is necessary to consider the task constraints. Moreover, robot has it's own workspace, which also can introduce limitations for the inverse kinematics problem. \\ 
 
@@ -708,7 +706,7 @@ Equation (6) and (8) mean that $\pb_i$ is on the segment with two end points $\q
 % footnotes above bottom floats. This can be corrected via the
 % \fnbelowfloat command of the stfloats package.
 
-\section{Sequential Quadratic Programming}
+\section{SEQUENTIAL QUADRATIC PROGRAMMING}
 
 In constrained optimization, the general aim is to transform the problem into an easier subproblem that can then be solved and used as the basis of an iterative process. A characteristic of a large class of early methods is the translation of the constrained problem to a basic unconstrained problem by using a penalty function for constraints that are near or beyond the constraint boundary. In this way the constrained problem is solved using a sequence of parameterized unconstrained optimizations, which in the limit (of the sequence) converge to the constrained problem. These methods are now considered relatively inefficient and have been replaced by methods that have focused on the solution of the Karush-Kuhn-Tucker (KKT) equations. The KKT equations are necessary conditions for optimality for a constrained optimization problem. If the problem is a so-called convex programming problem, that is, $f(x)$ and $g_i(x)$, $i = 1,\cdots,m$, are convex functions, then the KKT equations are both necessary and sufficient for a global solution point.
 
@@ -881,17 +879,20 @@ SQP method can always converge to a reasonable destination. Since it does not re
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
 \begin{thebibliography}{1}
+\bibitem{Biggs}
+Biggs, M. C. \emph{Constrained minimization using recursive quadratic programming.} Towards global optimization (1975).
 
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+\bibitem{Betts}
+Betts, John T. \emph{Practical methods for optimal control and estimation using nonlinear programming}. Society for Industrial and Applied Mathematics, 2010.
 
-%\end{thebibliography}
+\bibitem{powell-conv}
+Powell, Michael JD. \emph{The convergence of variable metric methods for nonlinearly constrained optimization calculations.} Nonlinear programming 3. 1978. 27-63.
 
-%\begin{thebibliography}{2}
+\bibitem{powell-fast}
+Powell, Michael JD. \emph{A fast algorithm for nonlinearly constrained optimization calculations.} Numerical analysis. Springer, Berlin, Heidelberg, 1978. 144-157.
 
 \bibitem{}
-Tomomichi Sugihara, \emph{Solvability-Unconcerned Inverse Kinematics by the Levenberg–Marquardt Method
+Tomomichi Sugihara, \emph{Solvability-Unconcerned Inverse Kinematics by the Levenberg-Marquardt Method
 }\hskip 1em plus
   0.5em minus 0.4em\relax IEEE Transactions on Robotics , Vol.27, No.5, Oct 2011. 
 
